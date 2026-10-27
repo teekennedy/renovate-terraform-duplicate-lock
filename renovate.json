@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["at any time"]
+  },
+  "postUpgradeTasks": {
+    "commands": [
+      "terraform init -backend=false -input=false",
+      "terraform providers lock -platform=linux_amd64 -platform=darwin_arm64"
+    ],
+    "fileFilters": [".terraform.lock.hcl"],
+    "executionMode": "branch"
+  }
+}
